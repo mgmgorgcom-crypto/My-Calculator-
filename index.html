@@ -1,0 +1,76 @@
+<script>
+alert("HTML working");
+</script>
+<div id="display">0</div>
+<button onclick="showNumber('7')">7</button>
+<button onclick="showNumber('8')">8</button>
+<button onclick="showNumber('9')">9</button>
+<button onclick="setOperator('/')">÷</button>
+<button onclick="showNumber('6')">6</button>
+<button onclick="showNumber('5')">5</button>
+<button onclick="showNumber('4')">4</button>
+<button onclick="setOperator('*')">×</button>
+<button onclick="showNumber('1')">1</button>
+<button onclick="showNumber('2')">2</button>
+<button onclick="showNumber('3')">3</button>
+
+<button onclick="setOperator('+')">+</button>
+
+<button onclick="showNumber('.')">.</button>
+<button onclick="showNumber('0')">0</button>
+<button onclick="backspace()">⌫</button>
+<button onclick="setOperator('-')">-</button>
+<button onclick="calculate()">=</button>
+<button onclick="clearDisplay()">AC</button>
+<link rel="stylesheet" href="style.css">
+<script>
+let display = "";
+let firstNumber = "";
+let operator = "";
+
+function showNumber(num){
+  display += num;
+  document.getElementById("display").innerText = display;
+}
+
+function setOperator(op){
+  if(display === "") return;
+  firstNumber = display;
+  operator = op;
+  display = "";
+  document.getElementById("display").innerText = "0";
+}
+
+function calculate(){
+  let secondNumber = display;
+  let result = 0;
+
+  if(operator === "+"){
+    result = Number(firstNumber) + Number(secondNumber);
+  } else if(operator === "-"){
+    result = Number(firstNumber) - Number(secondNumber);
+  } else if(operator === "*"){
+    result = Number(firstNumber) * Number(secondNumber);
+  } else if(operator === "/"){
+    result = Number(firstNumber) / Number(secondNumber);
+  }
+
+  display = result.toString();
+  document.getElementById("display").innerText = display;
+
+  firstNumber = "";
+  operator = "";
+}
+
+function clearDisplay(){
+  display = "";
+  firstNumber = "";
+  operator = "";
+  document.getElementById("display").innerText = "0";
+}
+
+function backspace(){
+  display = display.slice(0, -1);
+  document.getElementById("display").innerText = display || "0";
+}
+</script>
