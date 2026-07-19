@@ -1,92 +1,51 @@
- let display = "";
-
+let display = "";
 let firstNumber = "";
-
 let operator = "";
 
-function showNumber(num){
-
+function showNumber(num) {
   display += num;
-
   document.getElementById("display").innerText = display;
-
 }
 
-
-function setOperator(op){
-
-  if(display === "") return;
-
+function setOperator(op) {
+  if (display === "") return;
   firstNumber = display;
-
   operator = op;
-
   display = "";
-
   document.getElementById("display").innerText = "0";
-
 }
 
-function calculate(){
-
-  if(display === "" || firstNumber === "" || operator === "") return;
+function calculate() {
+  if (display === "" || firstNumber === "") return;
 
   let secondNumber = display;
-
   let result = 0;
 
-  if(operator === "+"){
-
+  if (operator === "+") {
     result = Number(firstNumber) + Number(secondNumber);
-
-  }
-
-  else if(operator === "-"){
-
+  } else if (operator === "-") {
     result = Number(firstNumber) - Number(secondNumber);
-Number(secondNumber);
-
-  }
-
-  else if(operator === "*"){
-
+  } else if (operator === "*") {
     result = Number(firstNumber) * Number(secondNumber);
-
-  }
-
-  else if(operator === "/"){
-
+  } else if (operator === "/") {
     result = Number(firstNumber) / Number(secondNumber);
-
-  } 
+  }
 
   display = result.toString();
-
   document.getElementById("display").innerText = display;
 
   firstNumber = "";
-
   operator = "";
-
 }
 
-function clearDisplay(){
-
+function clearDisplay() {
   display = "";
-
   firstNumber = "";
-  document.getElementById("display").innerText = "0";
-
   operator = "";
-
   document.getElementById("display").innerText = "0";
-  document.getElementById("display").innerText = "0";
-  document.getElementById("display").innerText = "0";
-
 }
 
-function backspace(){
-
+function backspace() {
   display = display.slice(0, -1);
-
-  document.getElementById("display").innerText = display || "0";}
+  document.getElementById("display").innerText = display || "0";
+}
