@@ -49,3 +49,6 @@ function backspace() {
   display = display.slice(0, -1);
   document.getElementById("display").innerText = display || "0";
 }
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
